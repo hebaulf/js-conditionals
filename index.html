@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Conditionals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+        <h1>Hello!</h1>
+        <h2>Welcome to my JS conditionals project</h2>
+        <p>Below is the content of my .js file (Open console to view output)</p>
+
+<div class="code-wrap">
+<span>Here I have a list of job applicants and their personal info along with programming skills.
+I have made an array of objects (the applicants) with nested arrays of data about each person</span>
+<pre>
+    <code>
+    var peopleCvs = [
+        {
+            firstName: "Zacharia",
+            lastName: "Ambrosch",
+            birthDate: "12/31/1997",
+            children: 1,
+            country: "Indonesia",
+            knowsProgramming: true
+        },
+        {
+            firstName: "Maegan",
+            lastName: "Breitler",
+            birthDate: "7/6/1998",
+            children: 4,
+            country: "South Africa",
+            knowsProgramming: false
+        },
+        {
+            firstName: "Sigismundo",
+            lastName: "Wyss",
+            birthDate: "8/11/1981",
+            children: 5,
+            country: "Thailand",
+            knowsProgramming: true
+        },
+        {
+            firstName: "Austen",
+            lastName: "Sutherington",
+            birthDate: "12/20/1999",
+            children: 4,
+            country: "Philippines",
+            knowsProgramming: false
+        },
+        {
+            firstName: "Jard",
+            lastName: "Shovelton",
+            birthDate: "11/30/1985",
+            children: 1,
+            country: "China",
+            knowsProgramming: false
+        }
+    ]
+    </code>
+</pre>
+<span>
+Check if the first person in the array is older than the last person in the array.
+Create variables for the first and last persons birth date.
+</span>
+<pre>
+    <code>
+    const firstPersonBirthDate = new Date(peopleCvs[0].birthDate);
+    const lastPersonBirthDate = new Date(peopleCvs[4].birthDate);
+    </code>
+</pre>
+
+<span>Calculate month difference from current date in time</span>
+<pre>
+    <code>
+    const monthDiffFirstPers = Date.now() - firstPersonBirthDate.getTime();
+    const monthDiffLastPers = Date.now() - lastPersonBirthDate.getTime();
+    </code>
+</pre>
+
+<span>Convert calculated difference in date format and extract year from date</span>
+<pre>
+    <code>
+    const yearFirstPers = new Date(monthDiffFirstPers).getUTCFullYear();
+    const yearLastPers = new Date(monthDiffLastPers).getUTCFullYear();
+    </code>
+</pre>
+
+<span>Calculate age</span>
+<pre>
+    <code>
+    const ageFirstPers = Math.abs(yearFirstPers - 1970);
+    const ageLastPers = Math.abs(yearLastPers - 1970);
+    
+    console.log("First person age: " + ageFirstPers);
+    console.log("Last person age: " + ageLastPers); 
+    </code>
+</pre>
+
+<span>If/else statement to check if first person is older than last.</span>
+<pre>
+    <code>
+    if (ageFirstPers > ageLastPers) {
+        console.log("First person is older than the last person.");
+    } else {
+        console.log("First person is younger than the last person.");
+    }
+
+console.log(`----- END OF LOOP -----`);
+    </code>
+</pre>
+
+<span>Using an if/else statement with equal value and equal type operator to check if the 2nd person has the same amount of kids as the 3rd?</span>
+<pre>
+    <code>
+    const secondPersonKids = peopleCvs[1].children;
+    const thirdPersonKids = peopleCvs[2].children;
+
+    if (secondPersonKids === thirdPersonKids) {
+        console.log("Second and third persons have the same amount of kids");
+    } else {
+        console.log("Second and third persons do not have the same amount of kids");
+    }
+
+console.log(`----- END OF LOOP -----`);
+    </code>
+</pre>
+
+<span>Using an if/else statement with and(&&) operator to check if the 1st person and the 4th person in the array both know how to program. If yes, output “Yay!”, if not output “LMGTFY”.</span>
+<pre>
+    <code>
+    const firstPersonProgramming = peopleCvs[0].knowsProgramming;
+    const fourthPersonProgramming = peopleCvs[3].knowsProgramming;
+
+    if (firstPersonProgramming && fourthPersonProgramming) {
+        console.log("Yay");
+    } else {
+        console.log("LMGTFY");
+    }
+
+console.log(`----- END OF LOOP -----`);
+    </code>
+</pre>
+
+<span>Using a switch statement that checks the 2nd person in the array for their nationality. If the person’s country is Iceland, output “Hæ”, if he/she is from Spain output “Hola”, if he/she is from Korea output “여보세요”. If the country is none of the above, output “Hello”. Tip: a switch statement might be a good fit for this task.</span>
+<pre>
+    <code>
+    const secondPersonNationality = peopleCvs[1].country;
+
+    switch (secondPersonNationality) {
+        case "Iceland":
+            console.log("Hæ");
+            break;
+        case "Spain":
+            console.log("Hola");
+            break;
+        case "Korea":
+            console.log("여보세요");
+            break;
+        default:
+            console.log("Hello");
+    }
+
+console.log(`----- END OF LOOP -----`);
+    </code>
+</pre>
+
+<span>Using a ternary operator to output if the 2nd person’s name is longer than 5 characters.</span>
+<pre>
+    <code>
+    let secondPersonNameLength = peopleCvs[1].firstName.length;
+
+    const personNameLength = secondPersonNameLength > 5 
+    ? "2nd person name is longer than 5 characters." 
+    : "2nd person name is shorter than 5 characters.";
+
+    console.log(personNameLength);
+
+console.log(`----- END OF LOOP -----`);
+    </code>
+</pre>
+</div>
+</main>
+
+<script src="index.js"></script>
+</body>
+</html>
